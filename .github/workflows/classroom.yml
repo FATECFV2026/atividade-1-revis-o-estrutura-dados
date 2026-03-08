@@ -1,0 +1,71 @@
+name: Classroom Autograding
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Compilação
+        id: compilacao
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Compilação
+          command: javac -d bin src/App.java
+          timeout: 10
+          max-score: 2
+
+      - name: Exercício 01 - Operações Básicas
+        id: exercicio_01
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Exercício 01 - Operações Básicas
+          command: bash scripts/grade.sh ex1
+          timeout: 20
+          max-score: 2
+
+      - name: Exercício 02 - INSS
+        id: exercicio_02
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Exercício 02 - INSS
+          command: bash scripts/grade.sh ex2
+          timeout: 20
+          max-score: 2
+
+      - name: Exercício 03 - IRPF
+        id: exercicio_03
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Exercício 03 - IRPF
+          command: bash scripts/grade.sh ex3
+          timeout: 20
+          max-score: 2
+
+      - name: Exercício 04 - Idade em dias
+        id: exercicio_04
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: Exercício 04 - Idade em dias
+          command: bash scripts/grade.sh ex4
+          timeout: 20
+          max-score: 2
+
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          COMPILACAO_RESULTS: "${{steps.compilacao.outputs.result}}"
+          EXERCICIO_01_RESULTS: "${{steps.exercicio_01.outputs.result}}"
+          EXERCICIO_02_RESULTS: "${{steps.exercicio_02.outputs.result}}"
+          EXERCICIO_03_RESULTS: "${{steps.exercicio_03.outputs.result}}"
+          EXERCICIO_04_RESULTS: "${{steps.exercicio_04.outputs.result}}"

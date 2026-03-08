@@ -1,0 +1,54 @@
+{
+  "tests": [
+    {
+      "name": "Compilação",
+      "setup": "",
+      "run": "javac -d bin src/App.java",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "Exercício 01 - Operações Básicas",
+      "setup": "",
+      "run": "bash scripts/grade.sh ex1",
+      "input": "",
+      "output": "OK",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 2
+    },
+    {
+      "name": "Exercício 02 - INSS",
+      "setup": "",
+      "run": "bash scripts/grade.sh ex2",
+      "input": "",
+      "output": "OK",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 2
+    },
+    {
+      "name": "Exercício 03 - IRPF",
+      "setup": "",
+      "run": "bash scripts/grade.sh ex3",
+      "input": "",
+      "output": "OK",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 2
+    },
+    {
+      "name": "Exercício 04 - Idade em dias",
+      "setup": "",
+      "run": "bash scripts/grade.sh ex4",
+      "input": "",
+      "output": "OK",
+      "comparison": "included",
+      "timeout": 20,
+      "points": 2
+    }
+  ]
+}
